@@ -1399,14 +1399,12 @@
                         <p class="text-2xl font-semibold">Login To Your Account</p>
                         <p class=" text-xs py-2 mb-3">Enter your details to login</p>
                         <!-- alert form -->
-                        <div id='result-alert' class=" text-sm bg-transparent text-teal-900 px-2 py-0" role="alert">
+                        <div id='result-alert' class="hidden text-sm bg-transparent text-teal-900 px-2 py-0" role="alert">
                             <div class=" alert-class flex  ">
                                 <div class="py-1"><svg class="fill-current h-4 w-4 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>
                                 <div class='message'>
                                     <!-- message -->
-                                        <script>
-                                          
-                                        </script>
+                                       
                                 </div>
                             </div>
                         </div>
@@ -1626,33 +1624,37 @@ recaptchaVerifier.render().then((widgetId) => {
 //GETTING THE STUDENT PHONE-NUMBER
 
 function onSignInSubmit (e){
- alert('clicked')
-    var phoneNumber = "+234" + phoneNum.value;
-    console.log(phoneNumber);
+var phoneNumber = "+234" + phoneNum.value;
 var appVerifier = window.recaptchaVerifier;
+
 signInWithPhoneNumber(auth, phoneNumber, appVerifier)
-    .then((confirmationResult) => {
+.then((confirmationResult) => {
+      alert("verifying");
       // SMS sent. Prompt user to type the code from the message, then sign the
       // user in with confirmationResult.confirm(code).
+       console.log(`OTP SENT TO ${phoneNumber}`);
       window.confirmationResult = confirmationResult;
       // ...
       phoneNum.value=''
-      console.log(confirmationResult); 
-       console.log(window.confirmationResult); 
+      var result =true;
     }).catch((error) => {
       // Error; SMS not sent
       // ...
-      phoneNum.value= ''
+       alert("OOPS an error occured");
+       console.log(typeOf(phoneNumber));
+       phoneNum.value=''
+        var result =false;
     });
    
  e.preventDefault();
 };
 
 function onverifySubmit(e) {
-    const code = otpverify.value;
- confirmationResult.confirm(code).then((result) => {
+  const code = otpverify.value;
+ confirmationResult.confirm(code)
+  .then((result) => {
   // User signed in successfully.
-  const user = result.user;
+  var user = result.user;
   // ...
    otpverify.value= ''
    prompt('verification successful')
@@ -1661,6 +1663,7 @@ function onverifySubmit(e) {
   // ...
    otpverify.value= ''
 });
+
  e.preventDefault();
 };
 
