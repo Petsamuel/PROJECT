@@ -31,3 +31,6 @@
     mobileBtn.addEventListener("click", () => {
         mobileMenu.classList.toggle("hidden");
     });
+
+    var challenge = new Uint8Array(32);
+window.crypto.getRandomValues(challenge);

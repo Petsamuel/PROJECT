@@ -144,37 +144,38 @@ function signoutbtn() {
 // const apiKey = "demobackend:public:c203e65b581443778ea4823b3ef0d6af";
 // const backendUrl = "https://demo-backend.passwordless.dev";
 
-async function Register(alias) {
-  const p = new Passwordless.Client({ apiKey });
-  const myToken = await fetch(backendUrl + "/create-token?alias=" + alias).then(
-    (r) => r.text()
-  );
-  await p.register(myToken);
-  console.log("Register succeded");
-}
 async function Signin(alias) {
-  const apiKey = "demobackend:public:c203e65b581443778ea4823b3ef0d6af";
-  const backendUrl = "https://demo-backend.passwordless.dev";
-  const p = new Passwordless.Client({ apiKey });
-  const token = await p.signinWithAlias(alias);
-  const user = await fetch(backendUrl + "/verify-signin?token=" + token).then(
-    (r) => r.json()
-  );
-  console.log("User details", user);
-  return user;
+  var userID = "Kosv9fPtkDoh4Oz7Yq/pVgWHS8HhdlCto5cR0aBoVMw=";
+  var id = Uint8Array.from(window.atob(userID), (c) => c.charCodeAt(0));
+  var publicKey = {
+    challenge: challenge,
+
+    rp: {
+      name: "yct security system",
+    },
+
+    user: {
+      id: id,
+      name: alias,
+      displayName: "bieefilled",
+    },
+
+    pubKeyCredParams: [
+      { type: "public-key", alg: -7 },
+      { type: "public-key", alg: -257 },
+    ],
+  };
+
+  navigator.credentials
+    .create({ publicKey: publicKey })
+    .then((newCredentialInfo) => {
+      console.log("SUCCESS", newCredentialInfo);
+    })
+    .catch((error) => {
+      console.log("FAIL", error);
+    });
 }
 // DEMO UI
-
-// Bind methods to UI buttons/events:
-async function RegisterPasswordless(e) {
-  e.preventDefault();
-  const alias = document.getElementById("alias").value;
-  await Register(alias);
-  Status("Succeded with register");
-}
-document
-  .getElementById("passwordless-register")
-  .addEventListener("click", RegisterPasswordless);
 
 async function handleSignInSubmit() {
   //   e.preventDefault();
