@@ -28,19 +28,6 @@ registerBtn.addEventListener("click", () => {
   loginform.classList.add("hidden");
 });
 
-// document
-//     .getElementById("passwordless-signin")
-//     .addEventListener("click", handleSignInSubmit);
-// document
-//     .getElementById("passwordless-register")
-//     .addEventListener("click", RegisterPasswordless);
-
-// var loginbtn = document.querySelector("#loginbtn");
-// loginbtn.addEventListener("click", () => {
-//     registerform.classList.add("hidden");
-//     loginform.classList.remove("hidden");
-
-// });
 
 API_KEY = "Bieefilled:public:ddb7c9f8960d46fd84805e42d5cb6717"; // Replace this value with your API Key
 var BACKEND_URL = ""; // will use node/app.js as default, but if you can't run node, use the hosted demo: https://demo-backend.passwordless.dev
