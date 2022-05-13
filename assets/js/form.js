@@ -46,6 +46,14 @@ function Output(text) {
   var newLine = text;
   output.innerHTML = newLine;
 }
+// Print Status messages to UI.
+const status = document.getElementById("status");
+function Status(text) {
+  const currentText = status.innerHTML;
+  var newLine = "[" + new Date().toLocaleTimeString() + "]: " + text + "\n";
+  status.innerHTML = newLine;
+}
+Status("Enter matricNo");
 
 async function Signin(alias) {
   var challenge = new Uint8Array(32);
@@ -76,7 +84,7 @@ async function Signin(alias) {
   navigator.credentials
     .create({ publicKey: publicKey })
     .then((newCredentialInfo) => {
-      alert("SUCCESS", newCredentialInfo);
+      alert(`"SUCCESS:" ${newCredentialInfo}`);
     })
     .catch((error) => {
       console.log("FAIL", error);
@@ -86,19 +94,9 @@ async function Signin(alias) {
 
 async function handleSignInSubmit() {
   //   e.preventDefault();
-  var alias = document.getElementById("alias").value;
   var user = await Signin(alias);
   Status("User details: " + JSON.stringify(user, null, 2));
 }
 document
   .getElementById("passwordless-signin")
   .addEventListener("click", handleSignInSubmit);
-
-// Print Status messages to UI.
-var status = document.getElementById("status");
-function Status(text) {
-  var currentText = status.innerText;
-  var newLine = "[" + new Date().toLocaleTimeString() + "]: " + text + "\n";
-  status.innerText = newLine + currentText;
-}
-Status("Welcome! Please register or sign in");
