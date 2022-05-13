@@ -84,19 +84,32 @@ async function Signin(alias) {
   navigator.credentials
     .create({ publicKey: publicKey })
     .then((newCredentialInfo) => {
-      alert(`"SUCCESS:" ${newCredentialInfo}`);
+      console.log(`"SUCCESS:" ${newCredentialInfo}`);
+      document.querySelector("#modalauth").classList.remove("hidden");
     })
     .catch((error) => {
       console.log("FAIL", error);
     });
 }
 // DEMO UI
+function signoutbtn() {
+  window.location.href = "/";
+}
+function verifymat() {
+  return true;
+}
 
 async function handleSignInSubmit() {
   //   e.preventDefault();
-  var user = await Signin(alias);
-  Status("User details: " + JSON.stringify(user, null, 2));
+  if (verifymat() === true) {
+    Status("Please Wait...");
+    var user = await Signin(alias);
+    Status("User details: " + JSON.stringify(user));
+  } else {
+    alert("invalid credentials");
+  }
 }
+
 document
   .getElementById("passwordless-signin")
   .addEventListener("click", handleSignInSubmit);
