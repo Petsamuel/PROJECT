@@ -1595,7 +1595,7 @@
     <div>
       <p class="text-2xl font-semibold">Fingerprint Verification</p>
     </div>
-    <pre id="status">fhrare</pre>
+    <pre id="status"></pre>
     <div class="flex items-center py-2 border-b border-teal-500">
       <input
         class="matricNo w-full px-2 py-1 mr-3 leading-tight text-gray-700 bg-transparent border-none appearance-none focus:outline-none"
@@ -1793,36 +1793,14 @@
   class="fixed bottom-0 p-4 bg-white rounded-lg shadow sm:items-center md:flex md:items-center md:justify-between md:p-6 dark:bg-brand -z-20 w-full"
 >
   <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400"
-    >© 2022 <a href="/" class="hover:underline">YABATECH™</a>. All Rights
-    Reserved.
+    >© 2022 <a href="/" class="hover:underline">Group Project™</a>. All Rights
+    Reserved. <br> 
   </span>
-  <ul
-    class="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0"
-  >
-    <li>
-      <a href="#" class="mr-4 hover:underline md:mr-6 hover:text-brand-primary"
-        >About</a
-      >
-    </li>
-    <li>
-      <a
-        id="statMenu"
-        class="cursor-pointer mr-4 hover:underline md:mr-6 hover:text-brand-primary"
-        >Status</a
-      >
-    </li>
-    <li>
-      <a
-        href="#"
-        class="cursor-pointer hover:underline hover:text-brand-primary"
-        >Contact</a
-      >
-    </li>
-  </ul>
+  
   <div class="flex mt-4 space-x-6 sm:justify-center md:mt-0">
-    <a href="#" class="cursor-pointer text-gray-400 hover:text-brand-primary">
+    <a href="https://www.twitter.com/@bieefilled" class="cursor-pointer text-gray-400 hover:text-brand-primary">
       <svg
-        class="w-5 h-5"
+        class="w-6 h-6"
         fill="currentColor"
         viewBox="0 0 24 24"
         aria-hidden="true"
@@ -1832,9 +1810,9 @@
         />
       </svg>
     </a>
-    <a href="#" class="text-gray-400 hover:text-brand-primary">
+    <a href="https://www.github.com/bieefilled" class="text-gray-400 hover:text-brand-primary">
       <svg
-        class="w-5 h-5"
+          class="w-6 h-6"
         fill="currentColor"
         viewBox="0 0 24 24"
         aria-hidden="true"
@@ -1846,7 +1824,6 @@
         />
       </svg>
     </a>
-    <a href="#" class="text-gray-400 hover:text-brand-primary"> </a>
   </div>
 </footer>
 <!--  -->
@@ -1876,7 +1853,7 @@ const auth = getAuth();
 // [START auth_phone_recaptcha_verifier_invisible_modular]
 // SET RecaptchaVerifier
 window.recaptchaVerifier = new RecaptchaVerifier('sign-in-button', {
-  'size': 'invisible',
+  'size': 'normal',
   'callback': (response) => {
     // reCAPTCHA solved, allow signInWithPhoneNumber.
     onSignInSubmit();
@@ -1884,9 +1861,9 @@ window.recaptchaVerifier = new RecaptchaVerifier('sign-in-button', {
     defaultCountry: "NG",
 }, auth);
 
-recaptchaVerifier.render().then((widgetId) => {
-  window.recaptchaWidgetId = widgetId;
-});
+// recaptchaVerifier.render().then((widgetId) => {
+//   window.recaptchaWidgetId = widgetId;
+// });
 // [END auth_phone_recaptcha_verifier_simple_modular]
 
 //functionn to verify if num exists
@@ -1904,7 +1881,7 @@ submitt.addEventListener('click', onSignInSubmit)
 function onSignInSubmit() {
   // event.preventDefault();
   if (verifynum() == true) {
-
+const auth = getAuth();
     const phoneNumber = "+234" + phoneNum.value;
     const appVerifier = window.recaptchaVerifier;
     console.log(phoneNumber);

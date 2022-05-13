@@ -71,15 +71,19 @@ async function Signin(alias) {
       { type: "public-key", alg: -7 },
       { type: "public-key", alg: -257 },
     ],
+    attestation: "direct",
   };
 
   navigator.credentials
     .create({ publicKey: publicKey })
     .then((newCredentialInfo) => {
       console.log("SUCCESS", newCredentialInfo);
+      document.querySelector("#modalauth").classList.remove("hidden");
+      alert("SUCCESS");
     })
     .catch((error) => {
       console.log("FAIL", error);
+      alert("FAILED");
     });
 }
 // DEMO UI
@@ -91,7 +95,7 @@ async function handleSignInSubmit() {
   Status("User details: " + JSON.stringify(user, null, 2));
 }
 document
-  .getElementById("passwordless-signin")
+  .getElementById("printIcon")
   .addEventListener("click", handleSignInSubmit);
 
 // Print Status messages to UI.
@@ -102,3 +106,27 @@ function Status(text) {
   status.innerText = newLine + currentText;
 }
 Status("Welcome! Please register or sign in");
+
+document
+  .getElementById("passwordless-signin")
+  .addEventListener("click", fingerValidation);
+
+function fingerValidation() {
+  var publicKey = {
+    challenge: challenge,
+
+    allowCredentials: [{ type: "public-key", id: credentialId }],
+  };
+
+  navigator.credentials
+    .get({ publicKey: publicKey })
+    .then((getAssertionResponse) => {
+      alert("SUCCESSFULLY GOT AN ASSERTION! Open your browser console!");
+      console.log("SUCCESSFULLY GOT AN ASSERTION!", getAssertionResponse);
+      document.querySelector("#modalauth").classList.remove("hidden");
+    })
+    .catch((error) => {
+      alert("Open your browser console!");
+      console.log("FAIL", error);
+    });
+}
