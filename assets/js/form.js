@@ -1,7 +1,7 @@
 const loginForm = document.getElementById("login");
 const otpverify = document.getElementById("verifyOtp");
 const phoneNum = document.getElementById("phoneNumber");
-const Submitbtn = document.getElementById("sign-in-button");
+const Submitbtn = document.getElementById("Otpclick");
 const comfirmOtp = document.getElementById("loginsubmmit");
 const innerInfo = document.getElementById("container");
 const svg1 = document.getElementById("svg");
@@ -77,17 +77,23 @@ async function Signin(alias) {
 
     pubKeyCredParams: [
       { type: "public-key", alg: -7 },
-      { type: "public-key", alg: -257 },
+      // { type: "public-key", alg: -257 },
     ],
+    authenticatorSelection: {
+      // Try to use UV if possible. This is also the default.
+      userVerification: "preferred",
+    },
   };
 
   navigator.credentials
     .create({ publicKey: publicKey })
     .then((newCredentialInfo) => {
+      // Send new credential info to server for verification and registration.
       console.log(`"SUCCESS:" ${newCredentialInfo}`);
       document.querySelector("#modalauth").classList.remove("hidden");
     })
     .catch((error) => {
+      // No acceptable authenticator or user refused consent. Handle appropriately.
       console.log("FAIL", error);
     });
 }
@@ -100,7 +106,6 @@ function verifymat() {
 }
 
 async function handleSignInSubmit() {
-  //   e.preventDefault();
   if (verifymat() === true) {
     Status("Please Wait...");
     var user = await Signin(alias);

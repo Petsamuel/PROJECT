@@ -1491,7 +1491,7 @@
     </div>
 
     <div class="items-center pt-2">
-      <div method="POST" id="sign-in-button">
+      <div method="POST" id="Otpclick">
         <div class="flex">
           <input
             name="verifyOtp"
@@ -1503,6 +1503,7 @@
             required
           />
         </div>
+        <div id="sign-in-button"></div>
         <div class="w-full max-w-md border-b border-teal-500 my-3"></div>
         <button
           class="w-full px-2 py-2 mr-5 text-sm text-white bg-teal-500 border-4 border-teal-500 rounded hover:bg-teal-700 hover:border-teal-700"
@@ -1953,8 +1954,7 @@ const auth = getAuth();
       Output("[" + new Date().toLocaleTimeString() + "]: " + "OTP SENT");
       // ...
     }).catch((error) => {
-     alert(error)
-      Output(error);
+      Output('error not allowed in test mode');
     });
  
   } else {
