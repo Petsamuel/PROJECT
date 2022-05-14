@@ -35,10 +35,6 @@ function verifynum() {
   if (phoneNum.value == "07011550818") {
     return true;
   }
-  if (phoneNum.value == "07011550818") {
-    document.querySelector("#result-alert").classList.add("text-red-900");
-    return true;
-  }
 }
 
 function onSignInSubmit() {
