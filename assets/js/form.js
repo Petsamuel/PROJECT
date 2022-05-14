@@ -99,7 +99,16 @@ async function Signin(alias) {
 }
 // DEMO UI
 function signoutbtn() {
-  window.location.href = "/";
+  firebase
+    .auth()
+    .signOut()
+    .then(() => {
+      // Sign-out successful.
+      window.location.href = "/";
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 }
 function verifymat() {
   return true;

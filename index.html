@@ -104,7 +104,7 @@
           <div
             class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10"
           >
-            <img src="/public/logoyct.png" alt="success" />
+            <img src="./public/logoyct.png" alt="success" />
           </div>
           <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
             <h3
@@ -1483,7 +1483,7 @@
           value="Get OTP"
           class="flex-shrink-0 px-2 py-1 text-sm text-white bg-teal-500 border-4 border-teal-500 rounded hover:bg-teal-700 hover:border-teal-700"
           value="Get OTP"
-          id="onSignInSubmit"
+          onclick="onSignInSubmit()"
         />
 
         <div id="sign-in-button"></div>
@@ -1509,7 +1509,7 @@
           class="w-full px-2 py-2 mr-5 text-sm text-white bg-teal-500 border-4 border-teal-500 rounded hover:bg-teal-700 hover:border-teal-700"
           type="submit"
           value="LOGIN"
-          id="onverifySubmit"
+          onclick="onverifySubmit()"
         >
           VERIFY
         </button>
@@ -1659,7 +1659,9 @@
       <p class="text-2xl font-semibold">Fingerprint Verification</p>
     </div>
     <pre id="status"></pre>
+
     <div class="flex items-center py-2 border-b border-teal-500">
+      <div id="sign-in-button"></div>
       <input
         class="matricNo w-full px-2 py-1 mr-3 leading-tight text-gray-700 bg-transparent border-none appearance-none focus:outline-none"
         type="text"
@@ -1890,121 +1892,12 @@
   </div>
 </footer>
 <!--  -->
+<script>
+  
+</script>
       </span>
 
-<!-- EVERYTHING FIREBASE -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js";
-  import { getAuth, RecaptchaVerifier, signInWithPhoneNumber } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-auth.js";
-   import { doc } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-firestore.js";
-
-(function() {
-    const firebaseConfig = {
-    apiKey: "AIzaSyDesPeGT_C5ui6neIrWY7beVaVWIENfKIs",
-    authDomain: "fir-92724.firebaseapp.com",
-    projectId: "fir-92724",
-    storageBucket: "fir-92724.appspot.com",
-    messagingSenderId: "306360100843",
-    appId: "1:306360100843:web:fa4c17ab4a4b67ea39dbae",
-    measurementId: "G-3MJ0WC11J2"
-  };
-  // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-})();
-const auth = getAuth();
-
-// [START auth_phone_recaptcha_verifier_invisible_modular]
-// SET RecaptchaVerifier
-window.recaptchaVerifier = new RecaptchaVerifier('sign-in-button', {
-  'size': 'normal',
-  'callback': (response) => {
-    // reCAPTCHA solved, allow signInWithPhoneNumber.
-    onSignInSubmit();
-  },
-    defaultCountry: "NG",
-}, auth);
-
-// recaptchaVerifier.render().then((widgetId) => {
-//   window.recaptchaWidgetId = widgetId;
-// });
-// [END auth_phone_recaptcha_verifier_simple_modular]
-
-//functionn to verify if num exists
-function verifynum() {
-  // init fb
-  // get the doc - users
-  // find the object with phoneNum
-  // const valid = data.includes(phoneNum.value);
-  // console.log(valid);
-  return true;
-}
-const submitt = document.querySelector('#onSignInSubmit')
-submitt.addEventListener('click', onSignInSubmit)
-
-function onSignInSubmit() {
-  // event.preventDefault();
-  if (verifynum() == true) {
-const auth = getAuth();
-    const phoneNumber = "+234" + phoneNum.value;
-    const appVerifier = window.recaptchaVerifier;
-    console.log(phoneNumber);
-    signInWithPhoneNumber(auth, phoneNumber, appVerifier)
-    .then((confirmationResult) => {
-      window.confirmationResult = confirmationResult;
-      Output("[" + new Date().toLocaleTimeString() + "]: " + "OTP SENT");
-      // ...
-    }).catch((error) => {
-      Output('error not allowed in test mode');
-    });
- 
-  } else {
-    //invalid form filled
-    Output(`NOT IN DATABASE`);
-    document.querySelector(".icon").classList.remove("hidden");
-  }
-}
-const otpSubmit = document.querySelector('#onverifySubmit')
-otpSubmit.addEventListener('click', onverifySubmit)
-
-
-// [START auth_phone_verify_code_modular]
-function onverifySubmit() {
-const code = otpverify.value;
-confirmationResult.confirm(code).then((result) => {
-  // User signed in successfully.
-  const user = result.user;
-  // ...
-  console.log("successful");
-      console.log(user);
-      document.querySelector("#modalauth").classList.remove("hidden");
-
-}).catch((error) => {
-  // User couldn't sign in (bad verification code?)
-  // ...
-   const message = error.message;
-      Output(`${message}`);
-      console.log(message);
-});
-
-  //
-  
- 
-}
-// [END auth_phone_verify_code_modular]
-
-
-
-
-
-
-</script>
-
-
-
-
-
-
-
+<script src="https://www.gstatic.com/firebasejs/6.0.2/firebase.js"></script>
 
 <script src="./assets/js/form.js"></script>
 <script src="firebase.js"></script>
