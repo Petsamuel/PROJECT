@@ -111,6 +111,11 @@ function signoutbtn() {
     });
 }
 function verifymat() {
+  const alias = document.querySelector("#alias");
+  let checker = /[a-zA-Z0-9]/;
+  if (!checker.test(alias.value)) {
+    Status("invalid matric");
+  }
   return true;
 }
 
@@ -119,6 +124,7 @@ async function handleSignInSubmit() {
     Status("Please Wait...");
     var user = await Signin(alias);
     Status("User details: " + JSON.stringify(user));
+    Status("Please Wait...");
   } else {
     alert("invalid credentials");
   }

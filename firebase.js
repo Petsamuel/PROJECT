@@ -10,6 +10,7 @@
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
 })();
 
 window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
@@ -27,9 +28,7 @@ recaptchaVerifier.render().then((widgetId) => {
 });
 
 function verifynum() {
-  let checker = /[a-zA-Z0-9]/;
-
-  if (phoneNum.value == "") {
+  if (phoneNum.value == "" || undefined) {
     document.querySelector("#result-alert").classList.add("text-red-900");
   }
   if (phoneNum.value == "07011550818") {
@@ -47,6 +46,7 @@ function onSignInSubmit() {
       .signInWithPhoneNumber(phoneNumber, appVerifier)
       .then((confirmationResult) => {
         window.confirmationResult = confirmationResult;
+        document.querySelector("#result-alert").classList.add("text-red-900");
         Output("[" + new Date().toLocaleTimeString() + "]: " + "OTP SENT");
         // ...
       })
@@ -55,7 +55,6 @@ function onSignInSubmit() {
       });
   } else {
     //invalid form filled
-
     Output(`NOT IN DATABASE`);
     document.querySelector(".icon").classList.remove("hidden");
   }
