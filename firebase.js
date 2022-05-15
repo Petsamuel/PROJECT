@@ -46,7 +46,9 @@ function onSignInSubmit() {
       .signInWithPhoneNumber(phoneNumber, appVerifier)
       .then((confirmationResult) => {
         window.confirmationResult = confirmationResult;
-        document.querySelector("#result-alert").classList.add("text-red-900");
+        document
+          .querySelector("#result-alert")
+          .classList.add("text-brand-primary");
         Output("[" + new Date().toLocaleTimeString() + "]: " + "OTP SENT");
         // ...
       })
@@ -55,6 +57,7 @@ function onSignInSubmit() {
       });
   } else {
     //invalid form filled
+    document.querySelector("#result-alert").classList.add("text-red-900");
     Output(`NOT IN DATABASE`);
     document.querySelector(".icon").classList.remove("hidden");
   }
@@ -70,6 +73,7 @@ function onverifySubmit() {
     })
     .catch((error) => {
       // User couldn't sign in (bad verification code?)
+      document.querySelector("#result-alert").classList.add("text-red-900");
       Output(`${error}`);
     });
 }
