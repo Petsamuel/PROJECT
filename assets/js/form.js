@@ -116,16 +116,12 @@ function mattempty() {
 
 function verifymat() {
   const alias = document.querySelector("#alias");
-  const matricChecker = /[a-zA-Z]+\/+[A-Za-z]+\/+[0-9]+\/+[0-9] /; // regular expression
+
   if (alias.value === "" || alias.value === undefined || alias.value < 8) {
     document.querySelector("#status").classList.add("text-red-500");
     return mattempty();
   }
-  if (!matricChecker.test(alias.value)) {
-    document.querySelector("#status").classList.add("text-red-500");
-    return false;
-  }
-  if (alias.value === "f/nd/19/3210137") {
+  if (alias.value === "f/nd/19/3210137" || alias.value === "f/nd/19/3210147") {
     document.querySelector("#status").classList.add("text-brand-primary");
     return true;
   }
@@ -135,7 +131,6 @@ function Hint() {
     "for security purpose use 070115501818 for phone number \n verification and 112233 for the OTP"
   );
 }
-document.querySelector("#alart-info").addEventListener("click", Hint());
 
 async function handleSignInSubmit() {
   if (verifymat() === true) {
