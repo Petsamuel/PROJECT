@@ -94,7 +94,8 @@ async function Signin(alias) {
     })
     .catch((error) => {
       // No acceptable authenticator or user refused consent. Handle appropriately.
-      console.log("FAIL", error);
+      console.log("FAIL", error.message);
+      Status(`${error.message}`);
     });
 }
 // DEMO UI
@@ -111,14 +112,15 @@ function signoutbtn() {
     });
 }
 function mattempty() {
+  document.querySelector("#status").classList.add("text-brand-primary");
   Status("EMPTY FIELD");
 }
 
 function verifymat() {
   const alias = document.querySelector("#alias");
 
-  if (alias.value === "" || alias.value === undefined || alias.value < 8) {
-    document.querySelector("#status").classList.add("text-red-500");
+  if (alias.value === "" || alias.value === undefined) {
+    document.querySelector("#status").classList.add("text-brand-primary");
     return mattempty();
   }
   if (alias.value === "f/nd/19/3210137" || alias.value === "f/nd/19/3210147") {
@@ -140,10 +142,14 @@ async function handleSignInSubmit() {
     Status("User details: " + JSON.stringify(user));
     Status("Please Wait...");
   } else if (verifymat() == mattempty()) {
-    document.querySelector("#result-alert").classList.add("text-red-900");
-    Status("FIELD CANNNOT BE EMPTY");
+    document.querySelector("#status").classList.add("text-brand-primary");
+    Status("Invalid matric-no");
+    alias.value === "";
   } else {
+    document.querySelector("#status").classList.add("text-brand-primary");
     Status("NOT IN DATABASE");
+
+    alias.value === "";
   }
 }
 
