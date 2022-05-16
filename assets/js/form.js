@@ -8,7 +8,7 @@ const svg1 = document.getElementById("svg");
 const form = document.getElementById("formID");
 const formContent = document.querySelector(".formContent");
 
-const verifiedMenu = document.querySelector("#statMenu");
+const verifiedMenu = document.querySelector(".statMenu");
 verifiedMenu.addEventListener("click", verifyMenu);
 const verifiedContent = document.querySelector(".verifiedContent");
 
@@ -50,7 +50,7 @@ function Output(text) {
 const status = document.getElementById("status");
 function Status(text) {
   const currentText = status.innerHTML;
-  var newLine = "[" + new Date().toLocaleTimeString() + "]: " + text + "\n";
+  var newLine = "[" + new Date().toLocaleTimeString() + "]: \n " + text + "\n";
   status.innerHTML = newLine;
 }
 Status("Enter matricNo");
@@ -110,23 +110,45 @@ function signoutbtn() {
       console.log(error);
     });
 }
+function mattempty() {
+  Status("EMPTY FIELD");
+}
+
 function verifymat() {
   const alias = document.querySelector("#alias");
-  let checker = /[a-zA-Z0-9]/;
-  if (!checker.test(alias.value)) {
-    Status("invalid matric");
+  const matricChecker = /[a-zA-Z]+\/+[A-Za-z]+\/+[0-9]+\/+[0-9] /; // regular expression
+  if (alias.value === "" || alias.value === undefined || alias.value < 8) {
+    document.querySelector("#status").classList.add("text-red-500");
+    return mattempty();
   }
-  return true;
+  if (!matricChecker.test(alias.value)) {
+    document.querySelector("#status").classList.add("text-red-500");
+    return false;
+  }
+  if (alias.value === "f/nd/19/3210137") {
+    document.querySelector("#status").classList.add("text-brand-primary");
+    return true;
+  }
 }
+function Hint() {
+  alert(
+    "for security purpose use 070115501818 for phone number \n verification and 112233 for the OTP"
+  );
+}
+document.querySelector("#alart-info").addEventListener("click", Hint());
 
 async function handleSignInSubmit() {
   if (verifymat() === true) {
+    document.querySelector("#status").classList.add("text-brand-primary");
     Status("Please Wait...");
     var user = await Signin(alias);
     Status("User details: " + JSON.stringify(user));
     Status("Please Wait...");
+  } else if (verifymat() == mattempty()) {
+    document.querySelector("#result-alert").classList.add("text-red-900");
+    Status("FIELD CANNNOT BE EMPTY");
   } else {
-    alert("invalid credentials");
+    Status("NOT IN DATABASE");
   }
 }
 

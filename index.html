@@ -30,7 +30,8 @@
                         <li>
                             <a class="hover:text-brand-primary" href="/">about</a>
                         </li>
-                      <li><a class="hover:text-brand-primary" id="statMenu">Status</a></li>
+                      <li>
+                        <a class="hover:text-brand-primary statMenu">Status</a></li>
 
                     </ul>
                 </div>
@@ -49,16 +50,16 @@
         class="hidden md:hidden absolute -right-0 h-screen bg-brand-secondary w-8/12 pt-4 -z-10 transition-all ease-in duration-1000 group-focus:opacity-100 group-focus:rght-100 group"
       >
         <ul
-          class="w-full container py-4 my-8 uppercase text-base group-focus:opacity-400 group-focus:right-100 font-[Poppins] text-brand flex flex-col cursor-pointer transition-all ease-in duration-1000"
+          class="w-full container m-auto py-4 my-8 uppercase text-base group-focus:opacity-400 group-focus:right-100 font-[Poppins] text-brand flex flex-col cursor-pointer transition-all ease-in duration-1000"
         >
-          <li class="hover:bg-brand-primary px-2 pt-4">
-            <a href="">Home</a>
+          <li class="hover:bg-brand-primary px-2 py-4 ">
+            <a href="/" class="mb-3 ">Home</a>
           </li>
-          <li class="hover:bg-brand-primary px-4 pt-4">
-            <a href="">about</a>
+          <li class="hover:bg-brand-primary px-4 py-4 ">
+            <a href="/" class="mb-3">about</a>
           </li>
-          <li class="hover:bg-brand-primary px-4 pt-4">
-           <a id="statMenu">Status</a>
+          <li class="statMenu hover:bg-brand-primary px-4 py-4 ">
+           <a class="mb-3 statMenu">Status</a></li>
           </li>
 
           <div class= " menu-form pt-10">
@@ -138,9 +139,9 @@
 
 
 <!-- login forms -->
-<div class="container pt-24 mx-auto formContent">
-    <div class="container flex justify-around py-4 mx-auto ">
-        <div class="sm:w-3  md:w-auto " id="svg">
+<div class="container pt-24 mx-auto  ">
+    <div class="container flex justify-around py-4 mx-auto formContent">
+        <div class="sm:w-6  md:w-auto " id="svg">
             <svg class="object-fill max-w-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 500" width="548.18259">
         <g id="freepik--background-complete--inject-34">
           <path
@@ -1514,9 +1515,9 @@
           VERIFY
         </button>
       </div>
-      <p class="text-xs text-gray-500 font-san mt-1">
+      <p class="text-xs text-gray-500 font-san mt-1 ">
         By clicking verify, you agreed to our
-        <a class="text-teal-500 hover:text-brand-primary" href="/ "
+        <a id="alart-info" class="text-teal-500 hover:text-brand-primary  cursor-pointer" 
           >Terms & Conditions</a
         >
       </p>
@@ -1652,13 +1653,13 @@
 </div>
 
 
-                        <!-- registration  -->
+<!-- registration  -->
                   <span class="w-full">
   <div id="register" class="hidden w-full max-w-sm px-12 py-4 mx-auto">
     <div>
       <p class="text-2xl font-semibold">Fingerprint Verification</p>
     </div>
-    <pre id="status"></pre>
+    <pre id="status" class=""></pre>
     <div>
       
     </div>
@@ -1811,9 +1812,9 @@
     </div>
 </div>
 
-<span class="verifiedContent hidden top-24 right-0 fixed w-96">
+<span class="hidden verifiedContent top-24 right-0 fixed w-96 ">
         <!-- list of verified students -->
-        <form class="top-48 self-center right-0 bg-fixed w-auto">
+        <div class="top-48 self-center right-0 bg-fixed w-auto ">
   <label
     for="default-search"
     class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300"
@@ -1852,7 +1853,7 @@
       Search
     </button>
   </div>
-</form>
+</div>
 
       </span>
       <span class="footer"> 
@@ -1862,7 +1863,7 @@
 >
   <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400"
     >© 2022 <a href="/" class="hover:underline hover:text-brand-primary">Group Project™</a> <br> All Rights
-    Reserved. <br> 
+    Reserved.
   </span>
   
   <div class="flex mt-4 space-x-6 sm:justify-center md:mt-0">
@@ -1894,10 +1895,7 @@
     </a>
   </div>
 </footer>
-<!--  -->
-<script>
-  
-</script>
+
       </span>
 
 

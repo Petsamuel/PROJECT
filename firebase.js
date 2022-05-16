@@ -27,11 +27,19 @@ recaptchaVerifier.render().then((widgetId) => {
   window.recaptchaWidgetId = widgetId;
 });
 
+function fault() {
+  return false;
+}
+
 function verifynum() {
+  test1 = "07011550818";
+  test2 = "08106396353";
   if (phoneNum.value == "" || undefined) {
     document.querySelector("#result-alert").classList.add("text-red-900");
+    return fault();
   }
-  if (phoneNum.value == "07011550818") {
+  if (phoneNum.value == test1 || phoneNum.value == test2) {
+    document.querySelector("#result-alert").classList.add("text-brand-primary");
     return true;
   }
 }
@@ -55,6 +63,10 @@ function onSignInSubmit() {
       .catch((error) => {
         Output(error);
       });
+  } else if (verifynum() == fault()) {
+    document.querySelector(".icon").classList.remove("hidden");
+    document.querySelector("#result-alert").classList.add("text-red-900");
+    Output(`CAN NOT BE EMPTY`);
   } else {
     //invalid form filled
     document.querySelector("#result-alert").classList.add("text-red-900");
