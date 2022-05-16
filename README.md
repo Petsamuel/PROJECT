@@ -19,8 +19,6 @@ case study for the application is yct hostel
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
-
 ## Overview
 
 Security threats are constantly regarded as one of the top challenges for an organization that must be addressed. Even when security rules are correctly designed at the outset, they may frequently be manipulated at any moment by any employee. Fortunately, the proposed system, "DEVELOPMENT OF A SECURITY SYSTEM FOR HOSTELS USING FINGERPRINT AND ONE-TIME-PASSWORD," appears to be feasible to supplement the existing manual-based system, which has the disadvantages of impersonation, inaccuracy, time consumption, and poor performance.
@@ -79,19 +77,20 @@ Security authentication is a very broad assessment which has the tendency to be 
 
 ### Useful resources
 
-- [Example resource 1](https://console.firebase.com) - This helped me for phone number authentication. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.mdn.com) - This is an amazing article which helped me finally understand the use and implementation of webauthentication . I'd recommend it to anyone still learning this concept.
+- [FIREBASE AUTHENTICATION ](https://console.firebase.com) - This helped me for phone number authentication. I really liked this pattern and will use it going forward.
+- [Example resource 2](https://www.developer.mozilla.org) - This is an amazing article which helped me finally understand the use and implementation of webauthentication . I'd recommend it to anyone still learning this concept.
 
 ## Author
 
-- Website - [Add your name here](https://bieeportfolio.netlify.app)
+- Website - [SAMUEL PETERS](https://bieeportfolio.netlify.app)
 - Github - [@bieefilled](https://github.com/@bieefilled)
 - Twitter - [@bieefilled](https://www.twitter.com/@bieefilled)
 
 ## Acknowledgments
 
-Finally, special thank my friends for their encouragement, unwavering efforts.
-also to Mr Michael Peters for encouragement, advices.
+-I'm grateful to Mr. OGUNDELE I.O., our Department Head, and Dr. (Mrs.) ADETOBA B.T for their assistance, recommendations, guidance, steadfast support, guidance, and encouragement throughout this project
+-Also to Mr Michael Peters for encouragement, advices and Prayers.
+Finally, special thank my friends for their encouragement, unwavering support.
 
 ## Got feedback for me?
 
